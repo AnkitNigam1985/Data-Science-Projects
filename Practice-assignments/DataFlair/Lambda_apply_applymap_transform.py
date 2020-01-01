@@ -44,8 +44,7 @@ Language  Percent grow
 Numbers = {'set_of_numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
 df = pd.DataFrame(Numbers, columns=['set_of_numbers'])
 
-df['equal_or_lower_than_4?'] = df['set_of_numbers'].apply(
-    lambda x: 'True' if x <= 4 else 'False')
+df['equal_or_lower_than_4?'] = df['set_of_numbers'].apply(lambda x: 'True' if x <= 4 else 'False')
 
 print(df)
 """
@@ -146,7 +145,7 @@ Oregon   0.08  0.44  -0.86
 
 """
 
-print(frame.b.apply(format))  # Apply on a column using apply
+print(frame.b.apply(format))  # Apply on a individual row using apply
 """
 Utah      -0.19
 Ohio       0.41
