@@ -88,7 +88,7 @@ A  B
 
 """
 
-print(df.mask(m, -df))  # Set the value to -ve where condition is True
+print(df.mask(m, -df)) #Set the value to -ve where condition is True
 """
  A  B
 0  0  1
