@@ -1,0 +1,125 @@
+## House Price Prediction using Linear Regression,Random Forest and Decision Tree
+
+
+[![](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House1.PNG)](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House1.PNG)
+
+House price dataset for Ames city is analyzed, missing values are handled, irrelevant columns are dropped from dataset, which might have caused bias in the prediction result and lastly the dataset is analyzed using Linear Regression,Random Forest and Decision Trees to predict the data and based on the values of bias,variance,RMSE the best model is finalized.  
+
+
+Dataset information
+[![](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House2.PNG)](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House2.PNG)
+
+
+Some major analysis made on the data set
+
+**1. Handled missing value from the dataset**
+
+[![Columns with highest missing values](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House3.PNG "Columns with highest missing values")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House3.PNG "Columns with highest missing values")
+
+Above columns has highest missing count and since missing count is huge, so can be dropped from the dataset.
+
+
+**2. Categorical and Numerical columns missing values**
+
+From heatmap, we can determine the missing values in the column which are denoted by white
+
+[![Columns with missing values](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House4.PNG "Columns with missing values")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House4.PNG "Columns with missing values")
+
+
+Missing values in Categorical columns replaced either using mode or 'NA' based on the documentation
+
+[![Categorical Columns](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House17.PNG "Categorical Columns")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House17.PNG "Categorical Columns")
+
+[![Categorical Columns](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House19.PNG "Categorical Columns")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House19.PNG "Categorical Columns")
+
+
+Numerical column missing values either replaced by median values or 0 depending on the documentation of the data.
+
+[![Numerical Columns](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House18.PNG "Numerical Columns")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House18.PNG "Numerical Columns")
+
+[![Numerical Columns](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House20.PNG "Numerical Columns")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House20.PNG "Numerical Columns")
+
+
+After fixing all the missing values, no column left with missing values as verified using heatmap
+
+[![Columns with missing values](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House5.PNG "Columns with missing values")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House5.PNG "Columns with missing values")
+
+
+
+**3. Verifying the distribution of input features**
+
+[![Data Distribution](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House6.PNG "Data Distribution")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House6.PNG "Data Distribution")
+
+
+From the above graphs, the input features are skewed, so normalized them before modelling
+
+
+**3. Selecting important numerical features in terms of its relation with output variable**
+
+[![Important features](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House8.PNG "Important features")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House8.PNG "Important features")
+
+
+So, will remove all the features which have correlation with target variable less than 0.5
+
+
+
+**4. Removing features have  high correlation between them**
+
+[![Important features](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House9.PNG "Important features")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House9.PNG "Important features")
+
+
+So, one of the features from the set will be removed if both have high correlation between them
+
+
+**5. Selecting important categorical features in terms of its relation with output variable - chi square test**
+
+[![Important features](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House10.PNG "Important features")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House10.PNG "Important features")
+
+
+So, will remove all the features which have probability of indepence with target variable less than 0.05
+
+
+**6. Veriftying assumptions of regression on the dataset**
+
+**Input features should have linear relation with target variable**
+
+[![linear relation](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House11.PNG "linear relation")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House11.PNG "linear relation")
+
+Important features have linear relationship with SalePrice.
+
+**Target variable should be normalized**
+
+[![Target variable](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House12.PNG "Target variable")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House12.PNG "Target variable")
+
+SalePrice is normalized 
+
+
+**No correlation between input features used for modelling**
+
+[![Important features](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House13.PNG "Important features")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House13.PNG "Important features")
+
+Can observe not high correlation between input features.
+
+
+**Error terms have constant variance**
+
+[![Error term](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House14.PNG "Error term")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House14.PNG "Error term")
+
+The target variable is linear in nature so constant variance.
+
+
+**7. Comparing models**
+
+
+[![Comparing Models](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House15.PNG "Comparing Models")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House15.PNG "omparing Models")
+
+
+**8. Finalizing the model**
+
+Since the bias,variance and RMSE is lowest in Linear Regression, so that will be finalized from the given models.
+
+
+[![Final Model](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House16.PNG "Final Model")](https://raw.githubusercontent.com/AnkitNigam1985/Data-Science/master/tmp_images/House16.PNG "Final Model")
+
+
+For detailed information, can check the presentation above and for the analysis, please refer the notebook.
